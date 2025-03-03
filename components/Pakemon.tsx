@@ -1,7 +1,7 @@
-"use client";  
+"use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import Image from "next/image";
 interface Pokemon {
   name: string;
   url: string;
@@ -82,29 +82,31 @@ const PokemonList = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredPokemons.map((pokemon) => (
-           <div
-           key={pokemon.id}
-           className="rounded-xl bg-white shadow-lg flex flex-col items-center text-center transform transition duration-300 hover:scale-105"
-         >
-           <div className="bg-white py-2 rounded-full">
-             <img 
-               src={pokemon.image} 
-               alt={pokemon.name} 
-               className="w-40 h-40 object-contain"
-             />
-           </div>
-           <div className="bg-blue-50 w-full text-left p-4 rounded-lg mt-4">
-             <p className="text-md font-semibold capitalize my-3">{pokemon.name}</p>
-             <Link
-               href={`/pokemon/${pokemon.id}`}
-               rel="noopener noreferrer"
-               className="text-blue-600 text-[12px] font-medium my-4 inline-block hover:text-blue-800 transition duration-200"
-             >
-               Details →
-             </Link>
-           </div>
-         </div>
-         
+            <div
+              key={pokemon.id}
+              className="rounded-xl bg-white shadow-lg flex flex-col items-center text-center transform transition duration-300 hover:scale-105"
+            >
+              <div className="bg-white py-2 rounded-full">
+                <Image
+                  src={pokemon.image}
+                  alt={pokemon.name}
+                  width={160}
+                  height={160}
+                  className="w-40 h-40 object-contain"
+                />
+              </div>
+              <div className="bg-blue-50 w-full text-left p-4 rounded-lg mt-4">
+                <p className="text-md font-semibold capitalize my-3">{pokemon.name}</p>
+                <Link
+                  href={`/pokemon/${pokemon.id}`}
+                  rel="noopener noreferrer"
+                  className="text-blue-600 text-[12px] font-medium my-4 inline-block hover:text-blue-800 transition duration-200"
+                >
+                  Details →
+                </Link>
+              </div>
+            </div>
+
           ))}
         </div>
       )}

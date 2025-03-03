@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-
+import Image from "next/image";
 interface PokemonDetails {
   name: string;
   id: number;
@@ -46,36 +46,42 @@ export default function PokemonPage() {
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 p-2 pt-3">
       <nav className="self-start w-full max-w-3xl mb-6">
-    <div className="flex justify-between items-center mt-6 ml-4">
-      <Link 
-        href="/" 
-       className="text-blue-600 text-[15px] font-medium my-4 inline-block hover:text-blue-800 transition duration-200"
-      >
-        ← Back
-      </Link>
-      <ul className="flex space-x-2 text-gray-600 text-md">
-        <li>
-          <Link href="/" className="hover:text-blue-600 transition duration-200">
-            Home
-          </Link> 
-          &gt;
-        </li>
-        <li>
-          <Link href="/" className="hover:text-blue-600 transition duration-200">
-            Pokemon
-          </Link> 
-          &gt;
-        </li>
-        <li className="text-blue-600 font-semibold capitalize">{pokemon?.name}</li>
-      </ul>
+        <div className="flex justify-between items-center mt-6 ml-4">
+          <Link
+            href="/"
+            className="text-blue-600 text-[15px] font-medium my-4 inline-block hover:text-blue-800 transition duration-200"
+          >
+            ← Back
+          </Link>
+          <ul className="flex space-x-2 text-gray-600 text-md">
+            <li>
+              <Link href="/" className="hover:text-blue-600 transition duration-200">
+                Home
+              </Link>
+              &gt;
+            </li>
+            <li>
+              <Link href="/" className="hover:text-blue-600 transition duration-200">
+                Pokemon
+              </Link>
+              &gt;
+            </li>
+            <li className="text-blue-600 font-semibold capitalize">{pokemon?.name}</li>
+          </ul>
 
-    </div>
-  </nav>
+        </div>
+      </nav>
       <div>
-      
+
       </div>
       <div className="bg-blue-100 shadow-lg rounded-2xl max-w-sm w-full text-center">
-        <img src={pokemon?.image} alt={pokemon?.name} className="w-60 h-60 mx-auto" />
+        <Image
+          src={pokemon?.image}
+          alt={pokemon?.name}
+          width={160}
+          height={160}
+          className="w-40 h-40 my-2 mx-auto"
+        />
         <div className="mt-6 p-5 text-[15px] space-y-1 bg-yellow-300 rounded-lg shadow-md text-gray-800 text-left">
           <p className=""><span className="font-semibold">Name:</span> {pokemon?.name}</p>
           <p><span className="font-semibold">Type:</span> {pokemon?.types.join(", ")}</p>
