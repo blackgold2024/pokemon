@@ -75,13 +75,17 @@ export default function PokemonPage() {
 
       </div>
       <div className="bg-blue-100 shadow-lg rounded-2xl max-w-sm w-full text-center">
-        <Image
-          src={pokemon?.image}
-          alt={pokemon?.name}
-          width={160}
-          height={160}
-          className="w-40 h-40 my-2 mx-auto"
-        />
+        {pokemon?.image && pokemon?.name ? (
+          <Image
+            src={pokemon.image}
+            alt={pokemon.name}
+            width={160}
+            height={160}
+            className="w-40 h-40 my-2 mx-auto"
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
         <div className="mt-6 p-5 text-[15px] space-y-1 bg-yellow-300 rounded-lg shadow-md text-gray-800 text-left">
           <p className=""><span className="font-semibold">Name:</span> {pokemon?.name}</p>
           <p><span className="font-semibold">Type:</span> {pokemon?.types.join(", ")}</p>
