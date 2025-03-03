@@ -31,7 +31,7 @@ export default function PokemonPage() {
         types: data.types.map((t: any) => t.type.name),
         stats: data.stats.map((s: any) => `${s.stat.name}: ${s.base_stat}`),
         abilities: data.abilities.map((a: any) => a.ability.name),
-        moves: data.moves.slice(0, 5).map((m: any) => m.move.name), // Show only 5 moves
+        moves: data.moves.slice(0, 5).map((m: any) => m.move.name),
       });
 
       setLoading(false);
